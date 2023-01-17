@@ -1,4 +1,6 @@
 import React from 'react';
+import axios from 'axios';
+import { ImageGalleryItem } from './ImageGalleryItem/ImageGalleryItem';
 // import { ToastContainer } from 'react-toastify';
 import { Searchbar } from './Searchbar/Searchbar';
 
@@ -18,11 +20,16 @@ componentDidUpdate(prevProps, prevState) {
     console.log('prevprops.searchName: ', prevProps.searchName)
     console.log('this.props.searchName: ', this.props.searchName)
 
-    fetch('https://pixabay.com/api/?q=cat&page=1&key=31233349-657dbeb08b09bae80b555b3c4&image_type=photo&orientation=horizontal&per_page=12')
-    .then(res => res.json())
-    .then(console.log)
+    const response = axios.get('https://pixabay.com/api/?q=cat&page=1&key=31233349-657dbeb08b09bae80b555b3c4&image_type=photo&orientation=horizontal&per_page=12');
+    return response;
   }
 }
+
+
+
+
+
+
 
 
 
@@ -31,6 +38,7 @@ componentDidUpdate(prevProps, prevState) {
       <div>
         <Searchbar onSubmit={this.handleFormSubmit} />
         {/* <ToastContainer autoClose={3000} /> */}
+        <ImageGalleryItem/>
       </div>
     );
   }
