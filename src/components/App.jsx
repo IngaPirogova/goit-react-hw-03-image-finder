@@ -1,14 +1,23 @@
-import { Component } from "react"
-import { Searchbar } from "./Searchbar/Searchbar"
+import React from 'react';
+// import { ToastContainer } from 'react-toastify';
+import { Searchbar } from './Searchbar/Searchbar';
 
 
-export class App extends Component {
+export class App extends React.Component {
+  state = {
+    searchName: '',
+  };
+
+  handleFormSubmit = searchName => {
+    this.setState({ searchName });
+  };
+
   render() {
-    return(
+    return (
       <div>
-        <Searchbar/>
+        <Searchbar onSubmit={this.handleFormSubmit} />
+        {/* <ToastContainer autoClose={3000} /> */}
       </div>
-    )
-
+    );
   }
 }
