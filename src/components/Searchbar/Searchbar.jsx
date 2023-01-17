@@ -1,5 +1,5 @@
 import React from 'react';
-// import { toast } from 'react-toastify';
+import toast, { Toaster } from 'react-hot-toast';
 // import css from './Searchbar.module.css';
 // import PropTypes from 'prop-types';
 
@@ -12,22 +12,22 @@ export class Searchbar extends React.Component {
     this.setState({ searchName: event.currentTarget.value.toLowerCase() });
   };
 
-  nandleSubmit = event => {
+  handleSubmit = event => {
     event.preventDefault();
 
     if (this.state.searchName.trim() === '') {
-    //   toast.error('Enter a text');
-    alert('Enter a text');
-      return;
+    toast.error('Enter a search query');
+      return
     }
     this.props.onSubmit(this.state.searchName);
-    // this.setState({ searchName: '' });
+     this.setState({ searchName: '' });
   };
 
   render() {
     return (
       <header className="searchbar">
-        <form className="form" onSubmit={this.hangleSubmit}>
+         <Toaster />
+          <form className="form" onSubmit={this.handleSubmit}>
           <button type="submit" className="button">
             <span className="button-label">Search</span>
           </button>

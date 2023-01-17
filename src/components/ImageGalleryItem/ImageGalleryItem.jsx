@@ -6,7 +6,7 @@ export const ImageGalleryItem = ({ id, webformatURL, largeImageURL } ) => {
       <li className="gallery-item"
       key={id}
       onClick={() => (largeImageURL)}
-    >li1
+    >
         <img src={webformatURL} alt='' />
       </li>
     </>
