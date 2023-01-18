@@ -16,18 +16,18 @@ export class Searchbar extends React.Component {
     event.preventDefault();
 
     if (this.state.searchName.trim() === '') {
-    toast.error('Enter a search query');
-      return
+      toast.error('Enter a search query');
+      return;
     }
     this.props.onSubmit(this.state.searchName);
-     this.setState({ searchName: '' });
+    this.setState({ searchName: '' });
   };
 
   render() {
     return (
       <header className="searchbar">
-         <Toaster />
-          <form className="form" onSubmit={this.handleSubmit}>
+        <Toaster />
+        <form className="form" onSubmit={this.handleSubmit}>
           <button type="submit" className="button">
             <span className="button-label">Search</span>
           </button>
