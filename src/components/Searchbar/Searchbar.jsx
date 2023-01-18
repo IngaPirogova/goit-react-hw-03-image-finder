@@ -5,6 +5,7 @@ import css from './Searchbar.module.css';
 
 export class Searchbar extends React.Component {
   state = {
+    
     searchName: '',
   };
 
@@ -14,6 +15,7 @@ export class Searchbar extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    event.target.reset();
 
     if (this.state.searchName.trim() === '') {
       toast.error('Enter a search query');
