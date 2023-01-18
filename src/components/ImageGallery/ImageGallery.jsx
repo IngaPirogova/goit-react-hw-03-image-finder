@@ -1,10 +1,10 @@
-// import css from './ImageGallery.module.css';
+import css from './ImageGallery.module.css';
 import PropTypes from 'prop-types';
 import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
 
 export const ImageGallery = ({ pictures, onClick}) => {
   return (
-    <ul>
+    <ul className={css.imageGalleryList}>
       {pictures.map(({ id, webformatURL, largeImageURL }) => {
         return (
           <ImageGalleryItem

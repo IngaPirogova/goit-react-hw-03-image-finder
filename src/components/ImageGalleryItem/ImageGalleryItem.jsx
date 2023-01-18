@@ -1,4 +1,4 @@
-// import css from './ImageGalleryItem.module.css';
+import css from './ImageGalleryItem.module.css';
 
 export const ImageGalleryItem = ({
   id,
@@ -9,11 +9,11 @@ export const ImageGalleryItem = ({
   return (
     <>
       <li
-        className="gallery-item"
+        className={css.galleryItem}
         key={id}
         onClick={() => onClick(largeImageURL)}
       >
-        <img src={webformatURL} alt="" />
+        <img className={css.galleryItem_image} src={webformatURL} alt="" />
       </li>
     </>
   );

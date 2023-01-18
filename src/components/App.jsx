@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+// import css from './App.module.css'
 import { ImageGallery } from './ImageGallery/ImageGallery';
 import { Searchbar } from './Searchbar/Searchbar';
 
@@ -15,13 +16,11 @@ export class App extends React.Component {
 
   async componentDidUpdate(prevState, prevProps) {
     if (prevState.searchName !== this.state.searchName) {
-      const response = await axios.get(
+      const responce = await axios.get(
         `https://pixabay.com/api/?q=${this.state.searchName}&page=1&key=31233349-657dbeb08b09bae80b555b3c4&image_type=photo&orientation=horizontal&per_page=12`
       );
-      console.log(response.data.hits)
-      return response;
-      
-
+      //  console.log(responce.data.hits)
+   this.setState ({pictures: responce.data.hits})   
     }
   }
 
@@ -29,12 +28,10 @@ export class App extends React.Component {
     return (
       <div>
         <Searchbar onSubmit={this.handleFormSubmit} />
-       
-          <ImageGallery
+        <ImageGallery
           pictures={this.state.pictures}
             onClick={this.onClick}          
-          ></ImageGallery>
-        
+          ></ImageGallery>       
         
       </div>
     );
