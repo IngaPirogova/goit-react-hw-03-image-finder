@@ -13,12 +13,15 @@ export class App extends React.Component {
     this.setState({ searchName });
   };
 
-  componentDidUpdate(prevState, prevProps) {
+  async componentDidUpdate(prevState, prevProps) {
     if (prevState.searchName !== this.state.searchName) {
-      const response = axios.get(
+      const response = await axios.get(
         `https://pixabay.com/api/?q=${this.state.searchName}&page=1&key=31233349-657dbeb08b09bae80b555b3c4&image_type=photo&orientation=horizontal&per_page=12`
       );
+      console.log(response.data.hits)
       return response;
+      
+
     }
   }
 
