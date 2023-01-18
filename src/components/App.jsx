@@ -32,8 +32,7 @@ export class App extends React.Component {
        
           <ImageGallery
           pictures={this.state.pictures}
-            onClick={this.onClick}
-          
+            onClick={this.onClick}          
           ></ImageGallery>
         
         
