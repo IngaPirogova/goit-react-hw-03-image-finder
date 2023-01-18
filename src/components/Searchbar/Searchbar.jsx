@@ -5,7 +5,6 @@ import css from './Searchbar.module.css';
 
 export class Searchbar extends React.Component {
   state = {
-    
     searchName: '',
   };
 

@@ -25,8 +25,10 @@ export class App extends React.Component {
   };
 
   async componentDidUpdate(_, prevState) {
-    if (prevState.searchName !== this.state.searchName ||
-        prevState.page !== this.state.page) {
+    if (
+      prevState.searchName !== this.state.searchName ||
+      prevState.page !== this.state.page
+    ) {
       const responce = await axios.get(
         `https://pixabay.com/api/?q=${this.state.searchName}&page=1&key=31233349-657dbeb08b09bae80b555b3c4&image_type=photo&orientation=horizontal&per_page=12`
       );
@@ -36,8 +38,8 @@ export class App extends React.Component {
 
     if (prevState.page !== this.state.page) {
       this.setState(prevState => ({
-        pictures: [...prevState.pictures, ...this.data.hits]
-      }))
+        pictures: [...prevState.pictures, ...this.data.hits],
+      }));
     }
   }
 
@@ -48,8 +50,8 @@ export class App extends React.Component {
         <ImageGallery
           pictures={this.state.pictures}
           onClick={this.onClick}
-        ></ImageGallery>                     
-        <Button onClick={this.loadMore} />  
+        ></ImageGallery>
+        <Button onClick={this.loadMore} />
       </div>
     );
   }
