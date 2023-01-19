@@ -70,15 +70,11 @@ export class App extends React.Component {
       <div>
         <Searchbar onSubmit={this.handleFormSubmit} />
 
-         <Loader />
+        <Loader />
 
-        <ImageGallery
-          pictures={pictures}
-          openModal={this.openModal}
-        />
-       
-          <Button loadMore={this.loadMore} />
-        
+        <ImageGallery pictures={pictures} openModal={this.openModal} />
+
+        <Button loadMore={this.loadMore} />
 
         {showModal ? (
           <Modal

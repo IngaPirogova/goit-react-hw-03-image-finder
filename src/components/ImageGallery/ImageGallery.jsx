@@ -2,7 +2,7 @@ import css from './ImageGallery.module.css';
 import PropTypes from 'prop-types';
 import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
 
-export const ImageGallery = ({ pictures}) => {
+export const ImageGallery = ({ pictures }) => {
   return (
     <ul className={css.imageGalleryList}>
       {pictures.map(({ id, webformatURL, largeImageURL, tag }) => {
@@ -21,5 +21,4 @@ export const ImageGallery = ({ pictures}) => {
 
 ImageGallery.propTypes = {
   pictures: PropTypes.array.isRequired,
-  
 };
