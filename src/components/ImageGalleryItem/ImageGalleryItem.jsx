@@ -5,23 +5,26 @@ export const ImageGalleryItem = ({
   id,
   webformatURL,
   largeImageURL,
-  onClick,
+  openModal,
+  alt,
 }) => {
   return (
     <>
       <li
         className={css.galleryItem}
         key={id}
-        onClick={() => onClick(largeImageURL)}
+        // onClick={() => onClick(largeImageURL)}
+         onClick={() => openModal(largeImageURL)}
       >
-        <img className={css.galleryItem_image} src={webformatURL} alt="" />
+        <img className={css.galleryItem_image} src={webformatURL} alt={alt} />
       </li>
     </>
   );
 };
 
-ImageGalleryItem.propTypes = {  
+ImageGalleryItem.propTypes = { 
+  alt: PropTypes.string, 
   largeImageURL: PropTypes.string.isRequired,
   webformatURL: PropTypes.string.isRequired,    
-  onClick: PropTypes.func.isRequired,
+  openModal: PropTypes.func.isRequired,
 };

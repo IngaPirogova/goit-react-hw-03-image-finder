@@ -2,7 +2,7 @@ import css from './ImageGallery.module.css';
 import PropTypes from 'prop-types';
 import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
 
-export const ImageGallery = ({ pictures, onClick}) => {
+export const ImageGallery = ({ pictures, openModal}) => {
   return (
     <ul className={css.imageGalleryList}>
       {pictures.map(({ id, webformatURL, largeImageURL }) => {
@@ -11,7 +11,7 @@ export const ImageGallery = ({ pictures, onClick}) => {
             key={id}
             largeImageURL={largeImageURL}
             webformatURL={webformatURL}
-             onClick={onClick}
+            openModal={openModal}
           />
         );
       })}
@@ -21,5 +21,5 @@ export const ImageGallery = ({ pictures, onClick}) => {
 
 ImageGallery.propTypes = {
   pictures: PropTypes.array.isRequired,
-  onClick: PropTypes.func.isRequired,
+  openModal: PropTypes.func.isRequired,
 };
