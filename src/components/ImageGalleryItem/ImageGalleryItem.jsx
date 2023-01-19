@@ -1,30 +1,28 @@
 import css from './ImageGalleryItem.module.css';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 export const ImageGalleryItem = ({
-  id,
   webformatURL,
-  largeImageURL,
-  openModal,
+  toggleModal,
   alt,
 }) => {
   return (
     <>
-      <li
-        className={css.galleryItem}
-        key={id}
-        // onClick={() => onClick(largeImageURL)}
-         onClick={() => openModal(largeImageURL)}
-      >
-        <img className={css.galleryItem_image} src={webformatURL} alt={alt} />
+      <li className={css.galleryItem}>
+        <img
+          className={css.galleryItem_image}
+          src={webformatURL}
+          alt={alt}
+          onClick={toggleModal}
+        />
       </li>
     </>
   );
 };
 
-ImageGalleryItem.propTypes = { 
-  alt: PropTypes.string, 
-  largeImageURL: PropTypes.string.isRequired,
-  webformatURL: PropTypes.string.isRequired,    
-  openModal: PropTypes.func.isRequired,
+ImageGalleryItem.propTypes = {
+  alt: PropTypes.string,
+  webformatURL: PropTypes.string.isRequired,
+  toggleModal: PropTypes.func,
 };
