@@ -12,8 +12,8 @@ export class App extends React.Component {
   state = {
     searchName: '',
     pictures: [],
-    page: 1, 
-    status: 'idle',   
+    page: 1,
+    status: 'idle',
   };
 
   handleFormSubmit = searchName => {
@@ -26,15 +26,13 @@ export class App extends React.Component {
     }));
   };
 
-   componentDidUpdate(prevState, prevProps) {
+  componentDidUpdate(prevState, prevProps) {
     const { searchName, page } = this.state;
 
-    if (
-      prevState.searchName !== searchName || prevState.page !== page) {
-        this.setState({ status: 'pending'});
-        api
-        .fetchResponce(searchName, page)        
-      
+    if (prevState.searchName !== searchName || prevState.page !== page) {
+      this.setState({ status: 'pending' });
+      api.fetchResponce(searchName, page);
+
       this.setState({ pictures: responce.data.hits });
     }
 
@@ -60,25 +58,7 @@ export class App extends React.Component {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // const responce = await axios.get(
-      //   `https://pixabay.com/api/?q=${this.state.searchName}&page=1&key=31233349-657dbeb08b09bae80b555b3c4&image_type=photo&orientation=horizontal&per_page=12`
-      // );
-      //  console.log(responce.data.hits)
+//   `https://pixabay.com/api/?q=${this.state.searchName}&page=1&key=31233349-657dbeb08b09bae80b555b3c4&image_type=photo&orientation=horizontal&per_page=12`
+// );
+//  console.log(responce.data.hits)
