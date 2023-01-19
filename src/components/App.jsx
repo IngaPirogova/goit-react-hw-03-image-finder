@@ -1,12 +1,12 @@
 import React from 'react';
-// import axios from 'axios';
 import { api } from './service/api';
-// import css from './App.module.css'
 import { ImageGallery } from './ImageGallery/ImageGallery';
 import { Searchbar } from './Searchbar/Searchbar';
 import { Button } from './Button/Button';
 import { Loader } from './Loader/Loader';
 // import { toast } from 'react-toastify';
+// import axios from 'axios';
+// import css from './App.module.css'
 
 export class App extends React.Component {
   state = {
