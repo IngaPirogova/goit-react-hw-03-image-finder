@@ -36,7 +36,7 @@ export class App extends React.Component {
       this.setState({ pictures: responce.data.hits });
     }
 
-    if (prevState.page !== this.state.page) {
+    if (prevState.page !== page) {
       this.setState(prevState => ({
         pictures: [...prevState.pictures, ...responce.data.hits],
       }));
