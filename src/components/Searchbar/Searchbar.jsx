@@ -8,7 +8,7 @@ export class Searchbar extends React.Component {
     searchName: '',
   };
 
-  handleNameChenge = event => {
+  handleNameChange = event => {
     this.setState({ searchName: event.currentTarget.value.toLowerCase() });
   };
 
@@ -27,7 +27,7 @@ export class Searchbar extends React.Component {
   render() {
     return (
       <header>
-        <Toaster />
+        <Toaster autoClose={2000}/>
         <form className={css.SearchForm} onSubmit={this.handleSubmit}>
           <button type="submit" className={css.SearchForm_button}>
             <span className={css.SearchForm_button_label}>Search</span>
@@ -36,9 +36,9 @@ export class Searchbar extends React.Component {
           <input
             className={css.searchForm_input}
             type="text"
-            name="searchName"
+            name="name"
             value={this.state.searchName}
-            onChange={this.handleNameChenge}
+            onChange={this.handleNameChange}
             autoComplete="off"
             autoFocus
             placeholder="Search images and photos"

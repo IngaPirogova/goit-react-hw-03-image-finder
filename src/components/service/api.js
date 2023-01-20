@@ -9,7 +9,7 @@ export async function fetchResponce(searchName, page) {
         const URL = `${BASE_URL}?q=${searchName}&page=${page}&key=${API_KEY}${OTHER_PARAMS}`;
         const responce = await axios.get(URL);
         return responce.data.hits;
-
+        
     } catch (error) {
         console.log(error);
     }

@@ -10,7 +10,7 @@ export const ImageGallery = ({ pictures, openModal }) => {
           <ImageGalleryItem
             key={id}
             largeImageURL={largeImageURL}
-            src={webformatURL}            
+            webformatURL={webformatURL}            
             openModal={openModal}
           />
         );
