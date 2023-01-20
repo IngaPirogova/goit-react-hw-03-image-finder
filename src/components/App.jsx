@@ -59,25 +59,19 @@ export class App extends React.Component {
     }
   }
   render() {
-    const { pictures, largeImageURL, showModal } =
-      this.state;
+    const { pictures, largeImageURL, showModal, loading, loadMore } = this.state;
     return (
       <div>
         <Searchbar onSubmit={this.handleFormSubmit} />
-
-        
+        {loading ? (
           <Loader />
-       
+        ) : (
           <ImageGallery pictures={pictures} openModal={this.openModal} />
-     
-
-      <Button loadMore={this.loadMore} />
-
-     
-      {showModal ? (
+        )}
+        {loadMore && <Button loadMore={this.loadMore} />}
+        {showModal ? (
           <Modal largeImageURL={largeImageURL} onClose={this.closeModal} />
         ) : null}
-     
       </div>
     );
   }
@@ -97,7 +91,6 @@ export class App extends React.Component {
 // {showModal ? (
 //   <Modal
 //     largeImageURL={largeImageURL} tag={this.tag} onClose={this.closeModal} />) : null}
-
 
 /* <div>
         <Searchbar onSubmit={this.handleFormSubmit} />
