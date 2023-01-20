@@ -36,7 +36,7 @@ export class App extends React.Component {
         toast.error(`Not found "${searchName}"`);
         return;
       } else {
-        toast.error(`By "${searchName}" found "${response}" images`);
+        toast.error(`By "${searchName}" found "${response.length}" images`);
       }
 
       this.setState({

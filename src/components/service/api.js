@@ -6,9 +6,10 @@ const OTHER_PARAMS = '&image_type=photo&orientation=horizontal&per_page=12'
 
 export async function fetchResponce(searchName, page) {
     try {
+       
         const URL = `${BASE_URL}?q=${searchName}&page=${page}&key=${API_KEY}${OTHER_PARAMS}`;
         const responce = await axios.get(URL);
-        return responce.data.hits;
+        return responce.data.hits;              
         
     } catch (error) {
         console.log(error);
