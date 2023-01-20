@@ -15,38 +15,33 @@ export class App extends React.Component {
     pictures: [],
     page: 1,
     status: 'idle',
+    isLoading: false,
+    loadMore: false,
     showModal: false,
-  };
-
-  toggleModal = () => {
-    this.setState(prevState => ({
-      showModal: !prevState.showModal,
-    }));
+    largeImageURL: null,
   };
 
   handleFormSubmit = searchName => {
     this.setState({ searchName, page: 1, pictures: [], status: 'idle' });
   };
-
   loadMore = () => {
     this.setState(prevState => ({
       page: prevState.page + 1,
     }));
   };
 
-  // openModal = largeImageURL => {
-  //   console.log(largeImageURL);
-  //   this.setState({
-  //     showModal: true,
-  //     largeImageURL: this.largeImageURL,
-  //   });
-  // };
+  openModal = largeImageURL => {
+    this.setState({
+      showModal: true,
+      largeImageURL: largeImageURL,
+    });
+  };
 
-  // closeModal = () => {
-  //   this.setState({
-  //     showModal: false,
-  //   });
-  // };
+  closeModal = () => {
+    this.setState({
+      showModal: false,
+    });
+  };
 
   async componentDidUpdate(prevProps, prevState) {
     const { searchName, page } = this.state;
@@ -63,25 +58,23 @@ export class App extends React.Component {
       }));
     }
   }
-
   render() {
-    const { pictures, showModal } = this.state;
+    const { pictures, isLoading, loadMore, largeImageURL, showModal } =
+      this.state;
     return (
       <div>
         <Searchbar onSubmit={this.handleFormSubmit} />
 
-        <Loader />
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <ImageGallery pictures={pictures} openModal={this.openModal} />
+        )}
 
-        <ImageGallery pictures={pictures} openModal={this.openModal} />
-
-        <Button loadMore={this.loadMore} />
+        {loadMore && <Button loadMore={this.loadMore} />}
 
         {showModal ? (
-          <Modal
-            largeImageURL={this.largeImageURL}
-            tag={this.tag}
-            onClose={this.toggleModal}
-          />
+          <Modal largeImageURL={largeImageURL} onClose={this.closeModal} />
         ) : null}
       </div>
     );
@@ -92,3 +85,13 @@ export class App extends React.Component {
 //   `https://pixabay.com/api/?q=${this.state.searchName}&page=1&key=31233349-657dbeb08b09bae80b555b3c4&image_type=photo&orientation=horizontal&per_page=12`
 // );
 //  console.log(responce.data.hits)
+
+// toggleModal = () => {
+//   this.setState(prevState => ({
+//     showModal: !prevState.showModal,
+//   }));
+// };
+
+// {showModal ? (
+//   <Modal
+//     largeImageURL={largeImageURL} tag={this.tag} onClose={this.closeModal} />) : null}
