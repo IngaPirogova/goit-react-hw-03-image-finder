@@ -6,7 +6,6 @@ import { Button } from './Button/Button';
 import { Loader } from './Loader/Loader';
 import { Modal } from './Modal/Modal';
 import toast, { Toaster } from 'react-hot-toast';
-
 // import css from './App.module.css'
 
 export class App extends React.Component {
@@ -19,7 +18,6 @@ export class App extends React.Component {
     loading: false,
     largeImageURL: null,
     isVisibleBtn: false,
-    
   };
 
   async componentDidUpdate(prevProps, prevState) {
@@ -32,7 +30,7 @@ export class App extends React.Component {
       console.log(response);
 
       if (response.length <= 0) {
-        console.log(response)
+        console.log(response);
         toast.error(`Not found "${searchName}"`);
         return;
       } else {
@@ -43,10 +41,7 @@ export class App extends React.Component {
         pictures: response,
         loading: false,
         isVisibleBtn: true,
-      }); 
-
-
-
+      });
     }
 
     if (prevState.page !== page) {
@@ -97,16 +92,13 @@ export class App extends React.Component {
           <Modal largeImageURL={largeImageURL} onClose={this.closeModal} />
         ) : null}
 
-<Toaster autoClose={2000}/>
+        <Toaster autoClose={2000} />
       </div>
     );
   }
 }
 
-
-
 // const responce = await axios.get(
 //   `https://pixabay.com/api/?q=${this.state.searchName}&page=1&key=31233349-657dbeb08b09bae80b555b3c4&image_type=photo&orientation=horizontal&per_page=12`
 // );
 //  console.log(responce.data.hits)
-
