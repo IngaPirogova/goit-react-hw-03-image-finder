@@ -15,7 +15,7 @@ export class App extends React.Component {
     pictures: [],
     page: 1,
     status: 'idle',
-    isLoading: false,
+    loading: false,
     loadMore: false,
     showModal: false,
     largeImageURL: null,
@@ -59,23 +59,25 @@ export class App extends React.Component {
     }
   }
   render() {
-    const { pictures, isLoading, loadMore, largeImageURL, showModal } =
+    const { pictures, largeImageURL, showModal } =
       this.state;
     return (
       <div>
         <Searchbar onSubmit={this.handleFormSubmit} />
 
-        {isLoading ? (
+        
           <Loader />
-        ) : (
+       
           <ImageGallery pictures={pictures} openModal={this.openModal} />
-        )}
+     
 
-        {loadMore && <Button loadMore={this.loadMore} />}
+      <Button loadMore={this.loadMore} />
 
-        {showModal ? (
+     
+      {showModal ? (
           <Modal largeImageURL={largeImageURL} onClose={this.closeModal} />
         ) : null}
+     
       </div>
     );
   }
@@ -95,3 +97,20 @@ export class App extends React.Component {
 // {showModal ? (
 //   <Modal
 //     largeImageURL={largeImageURL} tag={this.tag} onClose={this.closeModal} />) : null}
+
+
+/* <div>
+        <Searchbar onSubmit={this.handleFormSubmit} />
+
+        {loading ? (
+          <Loader />
+        ) : (
+          <ImageGallery pictures={pictures} openModal={this.openModal} />
+        )}
+
+        {loadMore && <Button loadMore={this.loadMore} />}
+
+        {showModal ? (
+          <Modal largeImageURL={largeImageURL} onClose={this.closeModal} />
+        ) : null}
+      </div> */
