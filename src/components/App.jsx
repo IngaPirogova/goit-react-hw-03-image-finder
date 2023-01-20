@@ -6,7 +6,7 @@ import { Button } from './Button/Button';
 import { Loader } from './Loader/Loader';
 import { Modal } from './Modal/Modal';
 import toast, { Toaster } from 'react-hot-toast';
-// import css from './App.module.css'
+import { animateScroll } from 'react-scroll';
 
 export class App extends React.Component {
   state = {
@@ -60,6 +60,15 @@ export class App extends React.Component {
     this.setState(prevState => ({
       page: prevState.page + 1,
     }));
+    this.scrollOnMoreButton();
+  };
+
+  scrollOnMoreButton = () => {
+    animateScroll.scrollToBottom({
+      duration: 1000,
+      delay: 10,
+      smooth: 'linear',
+    });
   };
 
   openModal = largeImageURL => {
