@@ -34,7 +34,7 @@ export class App extends React.Component {
         toast.error(`Not found "${searchName}"`);
         return;
       } else {
-        toast.error(`By "${searchName}" found "${response.length}" images`);
+        toast.success(`By "${searchName}" found "${response.length}" images`);
       }
 
       this.setState({
@@ -53,7 +53,7 @@ export class App extends React.Component {
   }
 
   handleFormSubmit = searchName => {
-    this.setState({ searchName, page: 1, pictures: [], status: 'idle' });
+    this.setState({ searchName, page: 1, pictures: [], status: 'idle', isVisibleBtn: false });
   };
 
   loadMore = () => {
