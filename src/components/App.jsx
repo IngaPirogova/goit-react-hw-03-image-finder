@@ -107,6 +107,8 @@ export class App extends React.Component {
   }
 }
 
+
+
 // const responce = await axios.get(
 //   `https://pixabay.com/api/?q=${this.state.searchName}&page=1&key=31233349-657dbeb08b09bae80b555b3c4&image_type=photo&orientation=horizontal&per_page=12`
 // );
