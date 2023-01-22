@@ -50,7 +50,7 @@ export class App extends React.Component {
     if (prevState.page !== page) {
       const response = await api.fetchResponce(searchName, page);
       this.setState(prevState => ({
-        pictures: [...prevState.pictures, ...response],
+        pictures: [...prevState.pictures, ...response.hits],
       }));
     }
   }

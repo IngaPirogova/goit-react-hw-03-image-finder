@@ -11,7 +11,8 @@ export const ImageGallery = ({ pictures, openModal }) => {
             key={id}
             largeImageURL={largeImageURL}
             webformatURL={webformatURL}            
-            openModal={openModal}            
+            openModal={openModal}  
+                
           />
         );
       })}
