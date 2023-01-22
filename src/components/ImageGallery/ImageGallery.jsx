@@ -10,9 +10,8 @@ export const ImageGallery = ({ pictures, openModal }) => {
           <ImageGalleryItem
             key={id}
             largeImageURL={largeImageURL}
-            webformatURL={webformatURL}            
-            openModal={openModal}  
-                
+            webformatURL={webformatURL}
+            openModal={openModal}
           />
         );
       })}
