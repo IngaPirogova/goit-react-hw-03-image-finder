@@ -18,10 +18,13 @@ export class App extends React.Component {
     loading: false,
     largeImageURL: null,
     isVisibleBtn: false,
+    hits: null,
+    
   };
 
   async componentDidUpdate(prevProps, prevState) {
     const { searchName, page } = this.state;
+    
 
     if (prevState.searchName !== searchName) {
       this.setState({ loading: true });
@@ -29,12 +32,12 @@ export class App extends React.Component {
       const response = await api.fetchResponce(searchName, page);
       console.log(response);
 
-      if (response.length <= 0) {
+      if (response.hits <= 0) {
         console.log(response);
         toast.error(`Not found "${searchName}"`);
         return;
       } else {
-        toast.success(`By "${searchName}" found "${response.length}" images`);
+        toast.success(`By "${searchName}" found "${response.total}" images`);
       }
 
       this.setState({
