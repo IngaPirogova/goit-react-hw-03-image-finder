@@ -18,7 +18,7 @@ export class App extends React.Component {
     loading: false,
     largeImageURL: null,
     isVisibleBtn: false,
-    hits: null,
+    
     
   };
 
