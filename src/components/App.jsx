@@ -17,9 +17,7 @@ export class App extends React.Component {
     showModal: false,
     loading: false,
     largeImageURL: null,
-    isVisibleBtn: false,
-    
-    
+    isVisibleBtn: false,    
   };
 
   async componentDidUpdate(prevProps, prevState) {
@@ -33,7 +31,7 @@ export class App extends React.Component {
       console.log(response);
 
       if (response.hits <= 0) {
-        console.log(response);
+        // console.log(response.hits);
         toast.error(`Not found "${searchName}"`);
         return;
       } else {
@@ -41,7 +39,7 @@ export class App extends React.Component {
       }
 
       this.setState({
-        pictures: response,
+        pictures: response.hits,
         loading: false,
         isVisibleBtn: true,
       });
@@ -115,4 +113,4 @@ export class App extends React.Component {
 // const responce = await axios.get(
 //   `https://pixabay.com/api/?q=${this.state.searchName}&page=1&key=31233349-657dbeb08b09bae80b555b3c4&image_type=photo&orientation=horizontal&per_page=12`
 // );
-//  console.log(responce.data.hits)
+//  console.log(responce.data)
