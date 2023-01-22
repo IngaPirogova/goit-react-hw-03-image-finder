@@ -10,7 +10,11 @@ export const ImageGalleryItem = ({
   alt,
 }) => {
   return (
-    <li className={css.galleryItem} key={id} onClick={() => openModal(largeImageURL)}>
+    <li
+      className={css.galleryItem}
+      key={id}
+      onClick={() => openModal(largeImageURL)}
+    >
       <img className={css.galleryItem_image} src={webformatURL} alt={alt} />
     </li>
   );

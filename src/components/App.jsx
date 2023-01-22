@@ -17,12 +17,11 @@ export class App extends React.Component {
     showModal: false,
     loading: false,
     largeImageURL: null,
-    isVisibleBtn: false,    
+    isVisibleBtn: false,
   };
 
   async componentDidUpdate(prevProps, prevState) {
     const { searchName, page } = this.state;
-    
 
     if (prevState.searchName !== searchName) {
       this.setState({ loading: true });
@@ -54,7 +53,13 @@ export class App extends React.Component {
   }
 
   handleFormSubmit = searchName => {
-    this.setState({ searchName, page: 1, pictures: [], status: 'idle', isVisibleBtn: false });
+    this.setState({
+      searchName,
+      page: 1,
+      pictures: [],
+      status: 'idle',
+      isVisibleBtn: false,
+    });
   };
 
   loadMore = () => {
@@ -107,8 +112,6 @@ export class App extends React.Component {
     );
   }
 }
-
-
 
 // const responce = await axios.get(
 //   `https://pixabay.com/api/?q=${this.state.searchName}&page=1&key=31233349-657dbeb08b09bae80b555b3c4&image_type=photo&orientation=horizontal&per_page=12`
