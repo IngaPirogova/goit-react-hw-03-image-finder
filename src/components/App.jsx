@@ -1,5 +1,5 @@
 import React from 'react';
-import { api } from './service/api';
+import { api } from 'service/api';
 import { ImageGallery } from './ImageGallery/ImageGallery';
 import { Searchbar } from './Searchbar/Searchbar';
 import { Button } from './Button/Button';
@@ -15,7 +15,6 @@ export class App extends React.Component {
     page: 1,
     status: 'idle',
     showModal: false,
-    loading: false,
     largeImageURL: null,
     isVisibleBtn: false,
   };
@@ -24,13 +23,12 @@ export class App extends React.Component {
     const { searchName, page } = this.state;
 
     if (prevState.searchName !== searchName) {
-      this.setState({ loading: true });
+      this.setState({ status: 'pending' });
 
       const response = await api.fetchResponce(searchName, page);
       console.log(response);
 
       if (response.hits <= 0) {
-        // console.log(response.hits);
         toast.error(`Not found "${searchName}"`);
         return;
       } else {
@@ -39,8 +37,8 @@ export class App extends React.Component {
 
       this.setState({
         pictures: response.hits,
-        loading: false,
         isVisibleBtn: true,
+        status: 'rejected',
       });
     }
 
@@ -91,13 +89,14 @@ export class App extends React.Component {
   };
 
   render() {
-    const { pictures, largeImageURL, showModal, loading, isVisibleBtn } =
+    const { pictures, largeImageURL, showModal, status, isVisibleBtn } =
       this.state;
     return (
       <div>
         <Searchbar onSubmit={this.handleFormSubmit} />
 
-        {loading && <Loader />}
+        {/* {loading && <Loader />} */}
+        {status === 'pending' && <Loader />}
 
         <ImageGallery pictures={pictures} openModal={this.openModal} />
 

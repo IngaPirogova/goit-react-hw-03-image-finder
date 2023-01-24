@@ -12,5 +12,5 @@ export const Button = ({ loadMore }) => {
 };
 
 Button.propTypes = {
-  loadMore: PropTypes.func,
+  loadMore: PropTypes.func.isRequired,
 };
