@@ -27,6 +27,7 @@ export class App extends React.Component {
 
       const response = await api.fetchResponce(searchName, page);
       console.log(response);
+      
 
       if (response.hits <= 0) {
         toast.error(`Not found "${searchName}"`);
@@ -34,12 +35,14 @@ export class App extends React.Component {
       } else {
         toast.success(`By "${searchName}" found "${response.total}" images`);
       }
+   
 
       this.setState({
         pictures: response.hits,
         isVisibleBtn: true,
         status: 'resolved',       
       });
+      return;
     }
 
     if (prevState.page !== page) {    
@@ -50,6 +53,7 @@ export class App extends React.Component {
         status: 'resolved',     
                          
       }));
+      return;
     }
   }
 
