@@ -4,13 +4,15 @@ import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
 
 export const ImageGallery = ({ pictures, openModal }) => {
   return (
-    <ul className={css.imageGalleryList}>
-      {pictures.map(({ id, webformatURL, largeImageURL }) => {
+    <ul 
+    className={css.imageGalleryList}
+    >
+      {pictures.map(({ webformatURL, largeImageURL }, index) => {
         return (
           <ImageGalleryItem
-            key={id}
+            key={index}
             largeImageURL={largeImageURL}
-            webformatURL={webformatURL}
+            webformatURL={webformatURL}           
             openModal={openModal}
           />
         );

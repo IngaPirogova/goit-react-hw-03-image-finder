@@ -16,7 +16,7 @@ export class App extends React.Component {
     status: 'idle',
     showModal: false,
     largeImageURL: null,
-    isVisibleBtn: false,
+    isVisibleBtn: false,   
   };
 
   async componentDidUpdate(prevProps, prevState) {
@@ -38,14 +38,17 @@ export class App extends React.Component {
       this.setState({
         pictures: response.hits,
         isVisibleBtn: true,
-        status: 'rejected',
+        status: 'resolved',       
       });
     }
 
-    if (prevState.page !== page) {
+    if (prevState.page !== page) {    
+      this.setState({ status: 'pending' }); 
       const response = await api.fetchResponce(searchName, page);
       this.setState(prevState => ({
-        pictures: [...prevState.pictures, ...response.hits],
+        pictures: [...prevState.pictures, ...response.hits], 
+        status: 'resolved',     
+                         
       }));
     }
   }
@@ -56,7 +59,7 @@ export class App extends React.Component {
       page: 1,
       pictures: [],
       status: 'idle',
-      isVisibleBtn: false,
+      isVisibleBtn: false,     
     });
   };
 
@@ -95,9 +98,9 @@ export class App extends React.Component {
       <div>
         <Searchbar onSubmit={this.handleFormSubmit} />
 
+        {pictures.length > 0 && <ImageGallery pictures={pictures} openModal={this.openModal} />}
+        
         {status === 'pending' && <Loader />}
-
-        <ImageGallery pictures={pictures} openModal={this.openModal} />
 
         {isVisibleBtn && <Button loadMore={this.loadMore} />}
 
