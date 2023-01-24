@@ -27,7 +27,7 @@ export class Searchbar extends React.Component {
   render() {
     return (
       <header className={css.Searchbar}>
-        <Toaster autoClose={2000} />
+        <Toaster autoClose={3000} />
         <form className={css.SearchForm} onSubmit={this.handleSubmit}>
           <button type="submit" className={css.SearchForm_button}>
             <span className={css.SearchForm_button_label}>Search</span>
