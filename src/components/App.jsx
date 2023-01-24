@@ -95,7 +95,6 @@ export class App extends React.Component {
       <div>
         <Searchbar onSubmit={this.handleFormSubmit} />
 
-        {/* {loading && <Loader />} */}
         {status === 'pending' && <Loader />}
 
         <ImageGallery pictures={pictures} openModal={this.openModal} />
