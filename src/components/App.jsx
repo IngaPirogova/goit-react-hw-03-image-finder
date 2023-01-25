@@ -105,7 +105,7 @@ export class App extends React.Component {
 
         {status === 'pending' && <Loader />}
 
-        {isVisibleBtn && <Button loadMore={this.loadMore} />}
+        {status === 'resolved' && isVisibleBtn && <Button loadMore={this.loadMore} />}
 
         {showModal ? (
           <Modal largeImageURL={largeImageURL} onClose={this.closeModal} />
